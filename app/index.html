@@ -146,8 +146,8 @@
                                 <span class="hidden-xs">Dashboard</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-bar-chart-o"></i>
                                 <span class="hidden-xs">Charts</span>
                             </a>
@@ -159,8 +159,8 @@
                                 <li><a href="#/charts_coindesk">CoinDesk realtime</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown" dropdown>
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-table"></i>
                                 <span class="hidden-xs">Tables</span>
                             </a>
@@ -170,8 +170,8 @@
                                 <li><a href="#/tables_beauty">Beauty Tables</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown" dropdown>
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-pencil-square-o"></i>
                                 <span class="hidden-xs">Forms</span>
                             </a>
@@ -181,8 +181,8 @@
                                 <li><a href="#/forms_file_uploader">File Uploader</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown" dropdown>
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-desktop"></i>
                                 <span class="hidden-xs">UI Elements</span>
                             </a>
@@ -194,8 +194,8 @@
                                 <li><a href="#/ui_icons">Icons</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown" dropdown>
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-list"></i>
                                 <span class="hidden-xs">Pages</span>
                             </a>
@@ -213,8 +213,8 @@
                                 <li><a href="#/page_500">Error 500</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown" dropdown>
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-map-marker"></i>
                                 <span class="hidden-xs">Maps</span>
                             </a>
@@ -223,8 +223,8 @@
                                 <li><a href="#/map_fullscreen">Fullscreen map</a></li>
                             </ul>
                         </li>
-                        <li class="dropdown" dropdown>
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-picture-o"></i>
                                 <span class="hidden-xs">Gallery</span>
                             </a>
@@ -245,16 +245,16 @@
                                 <span class="hidden-xs">Calendar</span>
                             </a>
                         </li>
-                        <li class="dropdown" dropdown>
-                            <a href="#" class="dropdown-toggle" dropdown-toggle>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-picture-o"></i>
                                 <span class="hidden-xs">Multilevel menu</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">First level menu</a></li>
                                 <li><a href="#">First level menu</a></li>
-                                <li class="dropdown" dropdown>
-                                    <a href="#" class="dropdown-toggle" dropdown-toggle>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle">
                                         <i class="fa fa-plus-square"></i>
                                         <span class="hidden-xs">Second level menu group</span>
                                     </a>
@@ -343,8 +343,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/directives/mainmenu.js"></script>
         <!-- endbuild -->
     </body>
 </html>
