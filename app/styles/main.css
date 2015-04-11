@@ -1329,22 +1329,22 @@ td.beauty-hover {
   background: #D15E5E !important;
   color:#f8f8f8 !important;
 }
-.txt-default {
+.text-default {
   color: #D8D8D8 !important;
 }
-.txt-primary {
+.text-primary {
   color: #6AA6D6 !important;
 }
-.txt-success, .has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline {
+.text-success, .has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline {
   color: #63CC9E !important;
 }
-.txt-info {
+.text-info {
   color: #7BC5D3 !important;
 }
-.txt-warning, .has-warning .help-block, .has-warning .control-label, .has-warning .radio, .has-warning .checkbox, .has-warning .radio-inline, .has-warning .checkbox-inline {
+.text-warning, .has-warning .help-block, .has-warning .control-label, .has-warning .radio, .has-warning .checkbox, .has-warning .radio-inline, .has-warning .checkbox-inline {
   color: #DFD271 !important;
 }
-.txt-danger, .has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline {
+.text-danger, .has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline {
   color: #D15E5E !important;
 }
 .has-success .form-control {
