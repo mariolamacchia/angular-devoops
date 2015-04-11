@@ -1,3 +1,4 @@
+<div ng-controller=dashboardCtrl>
 <!--Start Breadcrumb-->
 <div class="row">
 	<div id="breadcrumb" class="col-xs-12">
@@ -25,25 +26,55 @@
 	<div class="clearfix visible-xs"></div>
 	<div class="col-xs-12 col-sm-8 col-md-7 pull-right">
 		<div class="row">
-			<div class="col-xs-4">
-				<div class="sparkline-dashboard" id="sparkline-1"></div>
-				<div class="sparkline-dashboard-info">
+            <div class="col-xs-4">
+                <div class=pull-left>
+                    <span jq-sparkline="{
+                        type:'bar',
+                        barWidth:7,
+                        barColor:'#6aa6d6',
+                        barSpacing: 2,
+                        height:40
+                    }"
+                    data=dataTop1
+                    class=pull-left></span>
+                </div>
+                <div class="text-center dashboard-sparkline-text">
 					<i class="fa fa-usd"></i>756.45M
-					<span class="text-primary">EBITDA</span>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="sparkline-dashboard" id="sparkline-2"></div>
-				<div class="sparkline-dashboard-info">
+					<b class="text-primary">EBITDA</b>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class=pull-left>
+                    <span jq-sparkline="{
+                        type:'bar',
+                        barWidth:7,
+                        barColor:'#7bc5d3',
+                        barSpacing: 2,
+                        height:40
+                    }"
+                    data=dataTop2
+                    class=pull-left></span>
+                </div>
+                <div class="text-center dashboard-sparkline-text">
 					<i class="fa fa-usd"></i>245.12M
-					<span class="text-info">OIBDA</span>
+					<b class="text-info">OIBDA</b>
 				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="sparkline-dashboard" id="sparkline-3"></div>
-				<div class="sparkline-dashboard-info">
+            </div>
+            <div class="col-xs-4">
+                <div class=pull-left>
+                    <span jq-sparkline="{
+                        type:'bar',
+                        barWidth:7,
+                        barColor:'#d15e5e',
+                        barSpacing: 2,
+                        height:40
+                    }"
+                    data=dataTop3
+                    class=pull-left></span>
+                </div>
+                <div class="text-center dashboard-sparkline-text">
 					<i class="fa fa-usd"></i>107.83M
-					<span>REVENUE</span>
+					<b class=text-danger>REVENUE</b>
 				</div>
 			</div>
 		</div>
@@ -86,55 +117,81 @@
 							<td class="m-ticker"><b>BRDM</b><span>Broadem Inc.</span></td>
 							<td class="m-price">33.27</td>
 							<td class="m-change"><i class="fa fa-angle-up"></i> 1.45 (27&#37;)</td>
-							<td class="td-graph"></td>
+                            <td class="td-graph">
+                                <span jq-sparkline=tableSparkline data=dataTable1></span>
+                            </td>
 						</tr>
 						<tr>
 							<td class="m-ticker"><b>ASWLL</b><span>Aswell Corp.</span></td>
 							<td class="m-price">45.13</td>
 							<td class="m-change"><i class="fa fa-angle-up"></i> 6.32 (12&#37;)</td>
-							<td class="td-graph"></td>
+                            <td class="td-graph">
+                                <span jq-sparkline=tableSparkline data=dataTable2></span>
+                            </td>
+
 						</tr>
 						<tr>
 							<td class="m-ticker"><b>MIXL</b><span>Mixal LTD.</span></td>
 							<td class="m-price">71.13</td>
 							<td class="m-change"><i class="fa fa-angle-down"></i> 7.2 (12&#37;)</td>
-							<td class="td-graph"></td>
+                            <td class="td-graph">
+                                <span jq-sparkline=tableSparkline data=dataTable3></span>
+                            </td>
+
 						</tr>
 						<tr>
 							<td class="m-ticker"><b>LMPRD</b><span>L.A. Prod.</span></td>
 							<td class="m-price">30.24</td>
 							<td class="m-change"><i class="fa fa-angle-up"></i> 5.3 (18&#37;)</td>
-							<td class="td-graph"></td>
+                            <td class="td-graph">
+                                <span jq-sparkline=tableSparkline data=dataTable4></span>
+                            </td>
+
 						</tr>
 						<tr>
 							<td class="m-ticker"><b>ALK</b><span>Allien K.</span></td>
 							<td class="m-price">51.1</td>
 							<td class="m-change"><i class="fa fa-angle-up"></i> 7.5 (3.5&#37;)</td>
-							<td class="td-graph"></td>
+                            <td class="td-graph">
+                                <span jq-sparkline=tableSparkline data=dataTable5></span>
+                            </td>
+
 						</tr>
 						<tr>
 							<td class="m-ticker"><b>LNISW</b><span>Lenstri Sweet</span></td>
 							<td class="m-price">123.12</td>
 							<td class="m-change"><i class="fa fa-angle-down"></i> 54.3 (15.3&#37;)</td>
-							<td class="td-graph"></td>
+                            <td class="td-graph">
+                                <span jq-sparkline=tableSparkline data=dataTable6></span>
+                            </td>
+
 						</tr>
 						<tr>
 							<td class="m-ticker"><b>RNLD</b><span>Ron LEED</span></td>
 							<td class="m-price">64.14</td>
 							<td class="m-change"><i class="fa fa-angle-up"></i> 12.33 (0.3&#37;)</td>
-							<td class="td-graph"></td>
+                            <td class="td-graph">
+                                <span jq-sparkline=tableSparkline data=dataTable7></span>
+                            </td>
+
 						</tr>
 						<tr>
 							<td class="m-ticker"><b>BCN</b><span>BeetCN Corp.</span></td>
 							<td class="m-price">64.14</td>
 							<td class="m-change"><i class="fa fa-angle-up"></i> 12.33 (0.3&#37;)</td>
-							<td class="td-graph"></td>
+                            <td class="td-graph">
+                                <span jq-sparkline=tableSparkline data=dataTable8></span>
+                            </td>
+
 						</tr>
 						<tr>
 							<td class="m-ticker"><b>AWS</b><span>Awesome Inc.</span></td>
 							<td class="m-price">64.14</td>
 							<td class="m-change"><i class="fa fa-angle-up"></i> 12.33 (0.3&#37;)</td>
-							<td class="td-graph"></td>
+                            <td class="td-graph">
+                                <span jq-sparkline=tableSparkline data=dataTable9></span>
+                            </td>
+
 						</tr>
 					</tbody>
 				</table>
@@ -406,21 +463,46 @@
 </div>
 <!--End Dashboard 2 -->
 <div style="height: 40px;"></div>
-<script type="text/javascript">
-// Array for random data for Sparkline
-var sparkline_arr_1 = SparklineTestData();
-var sparkline_arr_2 = SparklineTestData();
-var sparkline_arr_3 = SparklineTestData();
-$(document).ready(function() {
-	// Make all JS-activity for dashboard
-	DashboardTabChecker();
-	// Load Knob plugin and run callback for draw Knob charts for dashboard(tab-servers)
-	LoadKnobScripts(DrawKnobDashboard);
-	// Load Sparkline plugin and run callback for draw Sparkline charts for dashboard(top of dashboard + plot in tables)
-	LoadSparkLineScript(DrawSparklineDashboard);
-	// Load Morris plugin and run callback for draw Morris charts for dashboard
-	LoadMorrisScripts(MorrisDashboard);
-	// Make beauty hover in table
-	$("#ticker-table").beautyHover();
-});
+</div>
+<script>
+    function dashboardCtrl($scope, $interval) {
+        $scope.dataTop1 = [];
+        $scope.dataTop2 = [];
+        $scope.dataTop3 = [];
+
+        var populateSparklines = function() {
+            for (var i = 1; i <= 3 ; i++) {
+                    $scope['dataTop' + i].length = 0;
+                for (var j = 0; j < 8; j++) {
+                    $scope['dataTop' + i]
+                        .push(Math.floor(Math.random() * 1000))
+                }
+            }
+        };
+
+        for (var i = 1; i <= 9; i++) {
+            $scope['dataTable' + i] = [];
+            for (var j = 0; j < 10; j++) {
+                $scope['dataTable' + i].push(Math.floor(Math.random() * 1000));
+            }
+        }
+
+        $scope.tableSparkline = {
+            type: 'line',
+            fillColor: false,
+            spotColor: false,
+            minSpotColor: false,
+            maxSpotColor: false,
+            width: 90,
+            lineColor: '#6aa6d6',
+            lineWidth: 2
+        };
+
+        $interval(populateSparklines, 1000);
+    }
 </script>
+<style>
+    .dashboard-sparkline-text {
+        margin-right: 20px;
+    }
+</style>
