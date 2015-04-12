@@ -15,8 +15,7 @@ angular
             'ngResource',
             'ngRoute',
             'ngSanitize',
-            'ngTouch',
-            'ui.bootstrap'
+            'ngTouch'
             ])
     .config(function ($routeProvider) {
         $routeProvider
@@ -27,5 +26,5 @@ angular
                 templateUrl: function(attr) {
                     return 'views/' + attr.name + '.html';
                 }
-            })
+            });
     });

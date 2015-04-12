@@ -14,7 +14,7 @@ angular.module('angularDevoopsApp')
                 jqSparkline: '=',
                 data: '='
             },
-            link: function (scope, elem, attrs) {
+            link: function (scope, elem) {
                 var render = function () {
                     var data;
 
@@ -22,13 +22,16 @@ angular.module('angularDevoopsApp')
                     if (angular.isString(scope.data)) {
                         data = scope.data;
                         data = data.replace(/(^,)|(,$)/g, '').split(',');
-                    } else data = scope.data;
+                    } else {
+                        data = scope.data;
+                    }
 
                     if (data instanceof Array &&
                         typeof scope.jqSparkline === 'object'
                     ) {
                         // Make sure we have an array of numbers
-                        $(elem).sparkline(data, scope.jqSparkline);
+                        angular.element(elem)
+                            .sparkline(data, scope.jqSparkline);
                     }
                 };
 
