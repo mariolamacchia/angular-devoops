@@ -1566,9 +1566,6 @@ fieldset[disabled] .btn-danger.active,
 .input-sm {
   height:18px;
 }
-.bg-white {
-  background: white !important;
-}
 .bg-default {
   background: #D8D8D8 !important;
 }
@@ -1977,14 +1974,12 @@ fieldset[disabled] .btn-danger.active,
 .devoops-pills {
   padding: 0;
 }
-.devoops-pills .nav {
+.devoops-pills > ul {
   background:#3575A0 url(../images/devoops_pattern_b10.png) 0 0 repeat;
-  -webkit-border-radius: 0 4px 4px 0;
-  -moz-border-radius: 0 4px 4px 0;
-  border-radius: 0 4px 4px 0;
   overflow: hidden;
+  width: 100%;
 }
-.devoops-pills .nav-stacked > li {
+.devoops-pills > ul > li {
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: 12px;
@@ -1993,7 +1988,7 @@ fieldset[disabled] .btn-danger.active,
   padding: 0;
   margin: 0;
 }
-.devoops-pills .nav-pills > li > a {
+.devoops-pills > ul > li > a {
   color: #f8f8f8;
   display: block;
   padding: 20px 10px 20px 15px;
@@ -2002,23 +1997,65 @@ fieldset[disabled] .btn-danger.active,
   border-radius: 0;
   outline:none;
 }
-.devoops-pills .nav-pills > li.active {
+.devoops-pills > ul > li.active {
   border-top-color: rgba(0, 0, 0, 0.11);
   position: relative;
   margin: 0;
 }
-.devoops-pills .nav-pills > li.active > a,
-.devoops-pills .nav-pills > li.active > a:hover,
-.devoops-pills .nav-pills > li.active > a:focus,
-.devoops-pills .nav > li > a:hover,
-.devoops-pills .nav > li > a:focus {
+.devoops-pills > ul > li.active > a,
+.devoops-pills > ul > li.active > a:hover,
+.devoops-pills > ul > li.active > a:focus,
+.devoops-pills > ul > li > a:hover,
+.devoops-pills > ul > li > a:focus {
   background:rgba(0, 0, 0, 0.1);
 }
-.devoops-pills .nav-pills > li.active > a:before {
-  font-family: FontAwesome;
+.devoops-pills > ul > li.active > a:before {
+}
+.devoops-pills > div {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float: left;
+  width: 100%;
+  background-color: white;
+}
+@media (min-width: 768px) {
+  .devoops-pills > div {
+    width: 83.3333333%;
+  }
+  .devoops-pills > ul {
+    width: 16.6666667%;
+  }
+}
+.devoops-pills.devoops-pills-left > ul {
+  float: left;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+}
+.devoops-pills.devoops-pills-right > ul {
+  float: right;
+  -webkit-border-radius: 0 4px 4px 0;
+  -moz-border-radius: 0 4px 4px 0;
+  border-radius: 0 4px 4px 0;
+}
+.devoops-pills.devoops-pills-right > ul > li.active > a:before {
   content: "\f0da";
   position: absolute;
+  font-family: FontAwesome;
   left: -2px;
+  font-size: 30px;
+  color: #f8f8f8;
+}
+.devoops-pills.devoops-pills-left > ul > li > a {
+  text-align: right;
+}
+.devoops-pills.devoops-pills-left > ul > li.active > a:after {
+  content: "\f0d9";
+  position: absolute;
+  font-family: FontAwesome;
+  right: -2px;
   font-size: 30px;
   color: #f8f8f8;
 }
