@@ -117,4 +117,17 @@ angular.module('angularDevoopsApp')
             value: 23
         }];
 
+        // Clients
+        $scope.clients = [];
+        for (var j = 0; j < 8; j++) {
+            $scope.clients.push(Math.floor(Math.random() * 1000));
+        }
+
+        $scope.clientsBar = {
+            type: 'bar',
+            barWidth: 5,
+            barSpacing: 2,
+            height: 30,
+            barColor: '#6aa6d6'
+        };
     });
