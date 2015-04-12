@@ -13,7 +13,6 @@
     "angular-touch": "1.2.16",
     "angular-route": "1.2.16",
     "fontawesome": "~4.3.0",
-    "angular-bootstrap": "~0.12.1",
     "jquery.sparkline": "http://omnipotent.net/jquery.sparkline/2.1.2/jquery.sparkline.js"
   },
   "devDependencies": {
