@@ -1,16 +1,12 @@
 // jshint unused:false
 'use strict';
 
-var $ = function(element) {
-    return {
-        sparkline: function(data, opts) {
-            element.text(
-                'sparkline' +
-                angular.toJson(data) +
-                angular.toJson(opts)
-            );
-        }
-    };
+Object.prototype.sparkline = function(data, opts) {
+    this.text(
+        'sparkline' +
+        angular.toJson(data) +
+        angular.toJson(opts)
+    );
 };
 
 describe('Directive: jqSparkline', function () {
