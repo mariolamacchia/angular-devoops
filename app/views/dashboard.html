@@ -299,10 +299,10 @@
 				<div class="col-xs-2 message-date">12/29/13</div>
 			</div>
 		</tab>
-        <tab heading=Statistics select=resize()>
+        <tab heading=Statistics select=showOsChart();>
 			<div class="col-xs-12">
 				<h4 class="page-header">OS Platform Statistics</h4>
-                <div morris-chart=osChart data=osChartData type=line style=height:300px;width:100%></div>
+                <div morris-chart=osChart data=osChartData ng-if=osChartShow></div>
 			</div>
 		</tab>
         <tab heading=Servers>
