@@ -162,4 +162,21 @@ angular.module('angularDevoopsApp')
             angular.element(window).resize();
             $scope.osChartShow = true;
         };
+
+        // Servers knobs
+        $scope.knobOptions = {
+            width: 60,
+            height: 60,
+            angleOffset: 180,
+            fgColor: '#6aa6d6',
+            skin: 'tron',
+            thickness: 0.2
+        };
+        for (var i = 1; i <= 6; i++) $scope['knobData' + i] = 50;
+        var knobTimer = function() {
+            for (var i = 1; i <= 6; i++) {
+                $scope['knobData' + i] += (Math.floor(Math.random() * 3) - 1);
+            }
+        };
+        $interval(knobTimer, 250);
     });
