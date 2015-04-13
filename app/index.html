@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="bower_components/morris.js/morris.css" />
         <!-- endbower -->
         <!-- endbuild -->
+        <link rel="stylesheet" href="bower_components/bower-xcharts/xcharts.css">
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
@@ -345,16 +346,20 @@
         <script src="bower_components/angular-morris-chart/src/angular-morris-chart.min.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script src="bower_components/jquery-knob/js/jquery.knob.js"></script>
+        <script src="bower_components/bower-xcharts/xcharts.js"></script>
+        <script src="bower_components/d3/d3.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers.js"></script>
+        <script src="scripts/controllers/dashboard.js"></script>
+        <script src="scripts/controllers/charts_xcharts.js"></script>
         <script src="scripts/directives/mainmenu.js"></script>
         <script src="scripts/directives/jqsparkline.js"></script>
         <script src="scripts/directives/morrischart.js"></script>
         <script src="scripts/directives/knob.js"></script>
+        <script src="scripts/directives/xcharts.js"></script>
         <!-- endbuild -->
     </body>
 </html>
