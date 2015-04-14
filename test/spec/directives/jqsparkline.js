@@ -1,9 +1,10 @@
-// jshint unused:false
 'use strict';
 
+var jqSparklineCalls = 0;
 Object.prototype.sparkline = function(data, opts) {
     this.text(
         'sparkline' +
+        (++jqSparklineCalls) +
         angular.toJson(data) +
         angular.toJson(opts)
     );
@@ -18,72 +19,41 @@ describe('Directive: jqSparkline', function () {
 
     beforeEach(inject(function ($rootScope) {
         scope = $rootScope.$new();
+        jqSparklineCalls = 0;
     }));
 
-    it('should require data attribute', inject(function ($compile) {
-        element = angular.element('<div jq-sparkline></div>');
-        element = $compile(element)(scope);
-        expect(element.text()).toBe('');
+    it('should call element sparkline function once',
+        inject(function ($compile) {
+            scope.opts = {a:1, type: 'a'};
+            scope.data1 = [1,2,3];
+            var html = '<div jq-sparkline=opts data=data1 type=t></div>';
+            element = angular.element(html);
+            element = $compile(element)(scope);
+            expect(element.text())
+                .toBe('sparkline1[1,2,3]{"a":1,"type":"t"}');
     }));
 
-    it('should have object as jqSparkline', inject(function ($compile) {
-        scope.d = '1,2,3';
-        element = angular.element('<div jq-sparkline="\'a\'" data="d"></div>');
+    it('should not replace type', inject(function ($compile) {
+        scope.opts = {a:2, type: 't'};
+        scope.data1 = [2,3];
+        var html = '<div jq-sparkline=opts data=data1></div>';
+        element = angular.element(html);
         element = $compile(element)(scope);
-        expect(element.text()).toBe('');
-        element = angular.element('<div jq-sparkline data="d"></div>');
-        element = $compile(element)(scope);
-        expect(element.text()).toBe('');
-        element = angular.element('<div jq-sparkline=123 data="d"></div>');
-        element = $compile(element)(scope);
-        expect(element.text()).toBe('');
+        expect(element.text()).toBe('sparkline1[2,3]{"a":2,"type":"t"}');
     }));
 
-    it('should call element sparkline function', inject(function ($compile) {
-        scope.opts = {a:1};
-        scope.data1 = '1,2,3';
-        element = angular.element('<div jq-sparkline=opts data=data1></div>');
-        element = $compile(element)(scope);
-        expect(element.text()).toBe('sparkline["1","2","3"]{"a":1}');
-    }));
-
-    it('should allow array and string as data', inject(function ($compile) {
-        scope.opts = {a:1};
-        scope.data1 = 123;
-        scope.data2 = '1,2,3';
-        scope.data3 = [1,2,3];
-        element = angular.element('<div jq-sparkline=opts data=data1></div>');
-        element = $compile(element)(scope);
-        expect(element.text()).toBe('');
-        element = angular.element('<div jq-sparkline=opts data=data2></div>');
-        element = $compile(element)(scope);
-        expect(element.text()).toBe('sparkline["1","2","3"]{"a":1}');
-        element = angular.element('<div jq-sparkline=opts data=data3></div>');
-        element = $compile(element)(scope);
-        expect(element.text()).toBe('sparkline[1,2,3]{"a":1}');
-    }));
-
-    it('should watch data', inject(function ($compile) {
+    it('should watch data and options', inject(function ($compile) {
         scope.data = [1,2,3];
         scope.opts = {a:1};
         element = angular.element('<div jq-sparkline=opts data=data></div>');
         element = $compile(element)(scope);
         scope.$apply();
-        expect(element.text()).toBe('sparkline[1,2,3]{"a":1}');
+        expect(element.text()).toBe('sparkline1[1,2,3]{"a":1}');
         scope.data.push(4);
         scope.$apply();
-        expect(element.text()).toBe('sparkline[1,2,3,4]{"a":1}');
-    }));
-
-    it('should watch options', inject(function ($compile) {
-        scope.data = [1,2,3];
-        scope.opts = {a:1};
-        element = angular.element('<div jq-sparkline=opts data=data></div>');
-        element = $compile(element)(scope);
-        scope.$apply();
-        expect(element.text()).toBe('sparkline[1,2,3]{"a":1}');
+        expect(element.text()).toBe('sparkline2[1,2,3,4]{"a":1}');
         scope.opts.a = 2;
         scope.$apply();
-        expect(element.text()).toBe('sparkline[1,2,3]{"a":2}');
+        expect(element.text()).toBe('sparkline3[1,2,3,4]{"a":2}');
     }));
 });

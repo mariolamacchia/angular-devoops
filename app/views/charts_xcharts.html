@@ -30,7 +30,7 @@
 				<div class="no-move"></div>
 			</div>
 			<div class="box-content">
-                <xchart type=line-dotted data=data1 opts=opts1 style=height:200px></xchart>
+                <div xchart=opts1 data=data1 type=line-dotted class=xchart></div>
 			</div>
 		</div>
 	</div>
@@ -55,7 +55,7 @@
 				<div class="no-move"></div>
 			</div>
 			<div class="box-content">
-                <xchart type=bar data=data2 style=height:200px></xchart>
+                <div xchart data=data2 type=bar class=xchart></div>
 			</div>
 		</div>
 	</div>
@@ -82,9 +82,14 @@
 				<div class="no-move"></div>
 			</div>
 			<div class="box-content">
-                <xchart type=line data=data3 opts=opts3 style=height:200px></xchart>
+                <div xchart=opts3 data=data3 type=line class=xchart></div>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
+<style>
+    .xchart {
+        height: 200px;
+    }
+</style>

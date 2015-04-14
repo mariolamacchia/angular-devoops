@@ -14,30 +14,20 @@ angular.module('angularDevoopsApp')
                 jqSparkline: '=',
                 data: '='
             },
-            link: function (scope, elem) {
-                var render = function () {
-                    var data;
-
-                    // Trim trailing comma if we are a string
-                    if (angular.isString(scope.data)) {
-                        data = scope.data;
-                        data = data.replace(/(^,)|(,$)/g, '').split(',');
-                    } else {
-                        data = scope.data;
-                    }
-
-                    if (data instanceof Array &&
-                        typeof scope.jqSparkline === 'object'
-                    ) {
-                        // Make sure we have an array of numbers
-                        angular.element(elem)
-                            .sparkline(data, scope.jqSparkline);
-                    }
+            link: function(scope, element, attrs) {
+                var render = function() {
+                    var opts = angular.extend({}, scope.jqSparkline);
+                    opts.type = attrs.type || opts.type;
+                    element.sparkline(scope.data, opts);
                 };
 
-                scope.$watch('jqSparkline', render, true);
-                scope.$watch('data', render, true);
                 render();
+
+                var update = function(o, n) {
+                    if (o !== n) render();
+                };
+                scope.$watch('jqSparkline', update, true);
+                scope.$watch('data', update, true);
             }
         };
     });
