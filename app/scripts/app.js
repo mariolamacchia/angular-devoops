@@ -10,14 +10,15 @@
  */
 angular
     .module('angularDevoopsApp', [
-            'ngAnimate',
-            'ngCookies',
-            'ngResource',
-            'ngRoute',
-            'ngSanitize',
-            'ngTouch',
-            'ui.bootstrap'
-            ])
+        'ngAnimate',
+        'ngCookies',
+        'ngResource',
+        'ngRoute',
+        'ngSanitize',
+        'ngTouch',
+        'ui.bootstrap',
+        'googlechart'
+    ])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
