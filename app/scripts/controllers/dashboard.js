@@ -2,6 +2,14 @@
 
 angular.module('angularDevoopsApp')
     .controller('dashboardCtrl', function($scope, $interval) {
+        /*
+         * Force resizing and avoid flashing unresized chart (needed for charts
+         * into tabsets
+         */
+        $scope.resize = function() {
+            angular.element(window).resize();
+        };
+
         // Header sparklines
         $scope.dataTop1 = [];
         $scope.dataTop2 = [];
@@ -50,7 +58,7 @@ angular.module('angularDevoopsApp')
 
         // Donuts
         $scope.donut = {
-            height: 150,
+            resize: true,
             formatter: function(y) {
                 // First chart
                 if (y === 5) return 'at most 5%';
@@ -69,7 +77,7 @@ angular.module('angularDevoopsApp')
                 if (y === 11) return 'last month';
                 if (y === 23) return 'last week';
                 return y;
-            }
+            },
         };
 
         $scope.donut1 = [{
@@ -154,15 +162,6 @@ angular.module('angularDevoopsApp')
             ykeys: ['Win8', 'Win7','Vista','NT','XP', 'Linux', 'Mac', 'Mobile'],
             labels: ['Win8', 'Win7','Vista','NT','XP', 'Linux', 'Mac', 'Mobile']
         };
-        /*
-         * Force resizing and avoid flashing unresized chart (needed for charts
-         * into tabsets
-         */
-        $scope.showOsChart = function() {
-            angular.element(window).resize();
-            $scope.osChartShow = true;
-        };
-
         // Servers knobs
         $scope.knobOptions = {
             width: 60,

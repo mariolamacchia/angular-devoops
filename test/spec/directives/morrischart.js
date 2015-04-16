@@ -70,6 +70,9 @@ describe('Directive: morrisChart', function () {
         element = angular.element('<div morris-chart data=data type="a"></div>');
         element = $compile(element)(scope);
         expect(element.text()).toBe('11{"data":[1,2,3]}');
+        element = angular.element('<div morris-chart data=data></div>');
+        element = $compile(element)(scope);
+        expect(element.text()).toBe('12{"data":[1,2,3]}');
     }));
 
     it('should override options.data only if data not undefinded',

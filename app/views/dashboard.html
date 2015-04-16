@@ -60,7 +60,7 @@
 <!--Start Dashboard 2-->
 <div class="row-fluid">
     <tabset type="'pills'" class="devoops-pills-right devoops-pills">
-        <tab heading=Overview>
+    <tab heading=Overview select=resize();>
 			<div id="ow-marketplace" class="col-sm-12 col-md-6">
 				<div id="ow-setting">
 					<a href="#"><i class="fa fa-folder-open"></i></a>
@@ -299,10 +299,10 @@
 				<div class="col-xs-2 message-date">12/29/13</div>
 			</div>
 		</tab>
-        <tab heading=Statistics select=showOsChart();>
+        <tab heading=Statistics select=resize();>
 			<div class="col-xs-12">
 				<h4 class="page-header">OS Platform Statistics</h4>
-                <div morris-chart=osChart data=osChartData ng-if=osChartShow></div>
+                <div morris-chart=osChart data=osChartData></div>
 			</div>
 		</tab>
         <tab heading=Servers>

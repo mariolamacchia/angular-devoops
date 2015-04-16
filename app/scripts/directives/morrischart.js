@@ -17,8 +17,11 @@ angular.module('angularDevoopsApp')
             link: function(scope, element, attrs) {
                 var chart;
                 var render = function() {
-                    var type = attrs.type.charAt(0).toUpperCase() +
-                        attrs.type.substr(1).toLowerCase();
+                    var type;
+                    if (attrs.type !== undefined) {
+                        type = attrs.type.charAt(0).toUpperCase() +
+                            attrs.type.substr(1).toLowerCase();
+                    } else type = 'Line';
                     if (['Line', 'Area', 'Bar', 'Donut'].indexOf(type) === -1) {
                         type = 'Line';
                     }
