@@ -3,6 +3,10 @@
 
 var plotCalls = 0;
 Object.prototype.plot = function(data, options) {
+    if (options.error) return {
+        data: function() {return undefined; }
+    };
+
     var element = this;
     element.text(
         element.text() +
@@ -11,12 +15,21 @@ Object.prototype.plot = function(data, options) {
         angular.toJson(options)
     );
     return {
-        setData: function(d) {
-            element.text(
-                plotCalls +
-                angular.toJson(data) +
-                angular.toJson(options)
-            );
+        data: function(d) {
+            if (d === 'plot') return {
+                setData: function(d) {
+                    element.text(
+                        plotCalls
+                    );
+                },
+                draw: function() {
+                    element.text(
+                        element.text() +
+                        angular.toJson(data) +
+                        angular.toJson(options)
+                    );
+                }
+            };
         }
     };
 };
@@ -57,4 +70,17 @@ describe('Directive: flot', function () {
         scope.$apply();
         expect(element.text()).toBe('2[2,3,4]{"a":3}');
     }));
+
+    it('should not watch data if an error occurred',
+        inject(function ($compile) {
+            scope.data = [2,3];
+            scope.opts = {error: true};
+            var donut = '<div flot=opts data=data></div>';
+            element = angular.element(donut);
+            element = $compile(element)(scope);
+            scope.$apply();
+            scope.data.push(4);
+            scope.$apply();
+        })
+    );
 });

@@ -12,10 +12,13 @@ angular.module('angularDevoopsApp')
                 var plot;
                 var render = function() {
                     element.html('');
-                    plot = element.plot(scope.data, scope.flot);
+                    plot = element.plot(scope.data, scope.flot).data('plot');
                 };
                 scope.$watch('data', function(n, o) {
-                    if (n !== o) plot.setData(n);
+                    if (n !== o && plot !== undefined) {
+                        plot.setData(n);
+                        plot.draw();
+                    }
                 }, true);
                 scope.$watch('flot', function(n, o) {
                     if (n !== o) render();
