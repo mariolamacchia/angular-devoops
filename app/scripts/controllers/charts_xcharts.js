@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularDevoopsApp')
-    .controller('chartsCtrl', function($scope, $interval) {
+    .controller('chartsCtrl', function($scope, $interval, $http) {
         // xCharts
         $scope.xData1 = {
             'xScale': 'time',
@@ -449,4 +449,93 @@ angular.module('angularDevoopsApp')
             options: chart8_options,
             type: 'ScatterChart'
         };
+
+        // CoinDesk
+        var prettyDates = function(){
+            var currDate = new Date();
+            var year = currDate.getFullYear();
+            var month = currDate.getMonth() + 1;
+            var startmonth = 1;
+            if (month > 3){
+                startmonth = month -2;
+            }
+            if (startmonth <=9){
+                startmonth = '0'+startmonth;
+            }
+            if (month <= 9) {
+                month = '0'+month;
+            }
+            var day= currDate.getDate();
+            if (day <= 9) {
+                day = '0'+day;
+            }
+            var startdate = year +'-'+ startmonth +'-01';
+            var enddate = year +'-'+ month +'-'+ day;
+            return [startdate, enddate];
+        }
+        var dates = prettyDates();
+        var startdate = dates[0];
+        var enddate = dates[1];
+
+        var xchart_data = [];
+        $scope.cdXChart = {
+            xScale: 'ordinal',
+            yScale: 'linear',
+            main: [{
+                'className': '.pizza',
+                'data': xchart_data
+            }]
+        };
+        var exchange_rate = [];
+        $scope.cdFlotChartData = [
+            { data: exchange_rate, label: "Bitcoin exchange rate ($)" }
+        ];
+        $scope.exchange_rate = exchange_rate;
+
+        var jsonURL =
+            'http://api.coindesk.com/v1/bpi/historical/close.json?start=' +
+            startdate+'&end='+enddate;
+        $http.get(jsonURL).success(function(result){
+            // Create array of data for xChart
+            $.each(result.bpi, function(key, val){
+                xchart_data.push({'x': key,'y':val});
+            });
+            var google_data = [['Date', 'Rate']];
+            $.each(result.bpi, function(key, val){
+                google_data.push([key,val]);
+            });
+            $scope.cdGoogleChart = {
+                options: {
+                    backgroundColor: '#fcfcfc',
+                    title: 'Coindesk Exchange Rate'
+                },
+                type: 'LineChart',
+                data: google_data
+            };
+            // Create array of data for Flot and Sparkline
+            $.each(result.bpi, function(key, val){
+                var parseDate=key;
+                parseDate=parseDate.split("-");
+                var newDate=parseDate[1]+"/"+parseDate[2]+"/"+parseDate[0];
+                var new_date = new Date(newDate).getTime();
+                exchange_rate.push([new_date,val]);
+            });
+            $scope.cdFlotChart = {
+                canvas: true,
+                xaxes: [
+                    { mode: "time" }
+                ],
+                yaxes: [
+                    { min: 0 },
+                    {
+                        position: "right",
+                        alignTicksWithAxis: 1,
+                        tickFormatter: function (value, axis) {
+                            return value.toFixed(axis.tickDecimals) + "€";
+                        }
+                    }
+                ],
+                legend: { position: "sw" }
+            };
+        });
     });
