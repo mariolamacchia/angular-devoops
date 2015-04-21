@@ -17,6 +17,7 @@ angular
         'ngSanitize',
         'ngTouch',
         'ui.bootstrap',
+        'ui.select',
         'googlechart'
     ])
     .config(function ($routeProvider) {

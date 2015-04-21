@@ -513,16 +513,25 @@
 						</select>
 					</div>
 				</div>
-				<h4 class="page-header">Select2 plugin</h4>
+				<h4 class="page-header">AngularJS ui-select</h4>
 				<div class="row form-group">
+                    <div class=col-sm-12><h5>Bootstrap theme</h5></div>
 					<div class="col-sm-12">
-						<select id="el2">
-							<option>Android</option>
-							<option>Sailfish OS</option>
-							<option>CyanogenMod</option>
-							<option>FirefoxOS</option>
-							<option>MeeGo</option>
-						</select>
+                        <ui-select ng-model=model theme=bootstrap append-to-body=true>
+                            <ui-select-match>{{$select.selected}}</ui-select-match>
+                            <ui-select-choices repeat="item in ['Android','Sailfish OS','CyanogenMod','FirefoxOS','MeeGo']">
+                                {{item}}
+                            </ui-select-choices>
+						</ui-select>
+					</div>
+                    <div class=col-sm-12><h5>Select2 theme</h5></div>
+					<div class="col-sm-12">
+                        <ui-select ng-model=model theme=select2 append-to-body=true>
+                            <ui-select-match>{{$select.selected}}</ui-select-match>
+                            <ui-select-choices repeat="item in ['Android','Sailfish OS','CyanogenMod','FirefoxOS','MeeGo']">
+                                {{item}}
+                            </ui-select-choices>
+						</ui-select>
 					</div>
 				</div>
 			</div>
@@ -667,14 +676,3 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-// Run Select2 on element
-function Select2Test(){
-	$("#el2").select2();
-}
-$(document).ready(function() {
-	// Load script of Select2 and run this
-	LoadSelect2Script(Select2Test);
-	WinMove();
-});
-</script>
